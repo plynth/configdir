@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "configdir"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "File names for keys. File contents for values."
 authors = ["Michael Thornton <six8@devdetails.com>"]
+readme = "README.rst"
+homepage = "https://github.com/plynth/configdir"
+repository = "https://github.com/plynth/configdir"
 
 [tool.poetry.dependencies]
 python = "^2.7 || ^3.6 ||  ^3.7"
