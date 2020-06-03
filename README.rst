@@ -7,6 +7,8 @@ File names for keys. File contents for values.
 For security, simplicity, and consistency, all configuration is in files |--|
 not environmental variables.
 
+.. contents:: :local:
+
 
 Features
 --------
@@ -68,14 +70,13 @@ Variable Interpolation
 ++++++++++++++++++++++
 
 Files can contain template place holders for other config keys. Placeholders
-begin with a ``$`` and are enclosed with parenthesis (``{{PLACEHOLDER}}``).
+are enclosed with squiggly braces (``{{PLACEHOLDER}}``).
 
-Placeholders can refer to nested keys using dot (``.``)
-notation: ``{{PARENT_KEY.NESTED_KEY}}``
-
-Placeholders can refer to nested list items using at ((``@``))
-notation: ``{{PARENT_KEY@1}}``
-
+- Placeholders can refer to nested keys using dot (``.``)
+  notation: ``{{PARENT_KEY.NESTED_KEY}}``
+- Placeholders can refer to nested list items using at (``@``)
+  notation: ``{{PARENT_KEY@1}}``
+- Placeholders may only reference number or string values.
 
 File Types
 ++++++++++
@@ -108,13 +109,13 @@ File Path                                                          Contents
 ``/configdir/CELERY_BROKER_URL``                                   ``sentinel://{{REDIS_HOST}}:{{REDIS_PORT}}``
 ``/configdir/CELERY_BROKER_TRANSPORT_OPTIONS/master_name``         ``{{REDIS_SENTINEL_MASTER}}``
 ``/configdir/CELERY_BROKER_TRANSPORT_OPTIONS/visibility_timeout``  ``3600``
-``/configdir/POSTGRES_DB_URI``	                                   ``postgresql://root:postgres@postgres:5432/database``
-``/configdir/SMTP/username``	                                     ``sender``
-``/configdir/SMTP/password``	                                     ``$3cr3t``
-``/configdir/SMTP/port``	                                         ``542``
-``/configdir/SMTP/host``	                                         ``mail.mailgun.com``
+``/configdir/POSTGRES_DB_URI``                                     ``postgresql://root:postgres@postgres:5432/database``
+``/configdir/SMTP/username``                                       ``sender``
+``/configdir/SMTP/password``                                       ``$3cr3t``
+``/configdir/SMTP/port``                                           ``542``
+``/configdir/SMTP/host``                                           ``mail.mailgun.com``
 ``/configdir/SMTP/certificate.bin``	                               ``<binary>``
-``/configdir/KEYS.json``	                                         ``{"keys": {"id": 1, "private_key": "<pem>", "public_key": "{{PUBLIC_KEY}}"}}``
+``/configdir/KEYS.json``                                           ``{"keys": {"id": 1, "private_key": "<pem>"}}``
 ``/configdir/PUBLIC_KEY.bin``	                                     ``<binary>``
 =================================================================  ========
 
@@ -129,8 +130,7 @@ Parsed ConfigDir
     "KEYS": {
       "keys": {
         "id": 1,
-        "private_key": "<pem>",
-        "public_key": "<binary>"
+        "private_key": "<pem>"
       }
     },
     "CELERY_BROKER_TRANSPORT_OPTIONS": {
@@ -148,9 +148,19 @@ Parsed ConfigDir
       "certificate": "<binary>",
       "host": "mail.mailgun.com",
       "password": "$3cr3t",
-      "port": "542",
+      "port": "542"
     }
   }
+
+
+Python Usage
+------------
+
+.. code-block:: python
+
+  from configdir import configdir
+  config = configdir()
+  print(config["REDIS_URI"])
 
 
 Similar Projects
