@@ -1,5 +1,6 @@
 import os
 
+from configdir.exceptions import ConfigDirMissingError
 from .interpolator import Interpolator
 from .compat import json
 
@@ -55,7 +56,13 @@ def parse(directory):
 
     Returns:
         dict: Config values
+
+    Raises:
+        ConfigDirMissingError: When configuration directory is missing.
     """
+    if not os.path.isdir(directory):
+        raise ConfigDirMissingError("`{}` is not a directory.".format(directory))
+
     interpolate_keys = set()
     config = _get_config_values(directory, interpolate_keys, ())
     interpolate = Interpolator(config)

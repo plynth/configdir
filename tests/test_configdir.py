@@ -6,6 +6,7 @@ import os
 import pytest
 
 from configdir import configdir
+from configdir.exceptions import ConfigDirMissingError
 from configdir.interpolator import Interpolator
 
 _SAMPLE_FILES = """\
@@ -148,3 +149,11 @@ def test_config_dir_directory(monkeypatch):
 
     monkeypatch.setitem(os.environ, "CONFIGDIR", "/bar")
     assert configdir() == "/bar"
+
+
+def test_directory_error():
+    """
+    Verify exception raised if config directory does not exist
+    """
+    with pytest.raises(ConfigDirMissingError):
+        configdir("/not/a/directory")
