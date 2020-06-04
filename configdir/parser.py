@@ -1,6 +1,6 @@
 import os
 
-from configdir.exceptions import ConfigDirMissingError
+from .exceptions import ConfigDirMissingError
 from .interpolator import Interpolator
 from .compat import json
 
