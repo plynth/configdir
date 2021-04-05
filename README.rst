@@ -89,7 +89,8 @@ File Types
   interpolated.
 - ``.bin`` will not be UTF8 decoded, will not be interpolated, and will be
   loaded as binary.
-
+- ``.uri`` will be decoded to a str and a custom uri parameter formatter
+  will be added as a setting to the key.
 
 Example
 ~~~~~~~
@@ -116,7 +117,8 @@ File Path                                                          Contents
 ``/configdir/SMTP/host``                                           ``mail.mailgun.com``
 ``/configdir/SMTP/certificate.bin``	                               ``<binary>``
 ``/configdir/KEYS.json``                                           ``{"keys": {"id": 1, "private_key": "<pem>"}}``
-``/configdir/PUBLIC_KEY.bin``	                                     ``<binary>``
+``/configdir/PUBLIC_KEY.bin``	                                   ``<binary>``
+``/configdir/TSR_BLOBSTORE_URI``                                   ``http://aderattsrngmvoc1gogj54:C%2FAhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m%2BpAA%2FNMWirg9UzSokGXeHk692FEy4Pg%3D%3D@blobstore.tsr.svc.cluster.local/diagnostics``
 =================================================================  ========
 
 
@@ -149,7 +151,8 @@ Parsed ConfigDir
       "host": "mail.mailgun.com",
       "password": "$3cr3t",
       "port": "542"
-    }
+    },
+    "TSR_BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m%2BpAA%2FNMWirg9UzSokGXeHk692FEy4Pg%3D%3D@blobstore.tsr.svc.cluster.local/diagnostics"
   }
 
 
