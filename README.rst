@@ -155,7 +155,9 @@ Parsed ConfigDir
       "password": "$3cr3t",
       "port": "542"
     },
-    "TSR_BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/"
+    "BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/",
+    "BLOBSTORE_KEY": "aderattsrngmvoc1gogj54",
+    "BLOBSTORE_SECRET": "C/Ahz+pAA/NMWirgEy4Pg=="    
   }
 
 
