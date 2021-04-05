@@ -102,15 +102,15 @@ Directory Contents
 =================================================================  ========
 File Path                                                          Contents
 =================================================================  ========
-``/configdir/REDIS_URI``                                           ``redis://:{{REDIS_PASSWORD}}@{{REDIS_HOST}}:{{REDIS_PORT}}/{{REDIS_SENTINEL_MASTER}}/0``
+``/configdir/REDIS_URI.uri``                                       ``redis://:{{REDIS_PASSWORD}}@{{REDIS_HOST}}:{{REDIS_PORT}}/{{REDIS_SENTINEL_MASTER}}/0``
 ``/configdir/REDIS_PASSWORD``                                      ``$3cr3t``
 ``/configdir/REDIS_SENTINEL_MASTER``                               ``mymaster``
 ``/configdir/REDIS_HOST``                                          ``redis-sentinel``
 ``/configdir/REDIS_PORT``                                          ``6319``
-``/configdir/CELERY_BROKER_URL``                                   ``sentinel://{{REDIS_HOST}}:{{REDIS_PORT}}``
+``/configdir/CELERY_BROKER_URL.uri``                               ``sentinel://{{REDIS_HOST}}:{{REDIS_PORT}}``
 ``/configdir/CELERY_BROKER_TRANSPORT_OPTIONS/master_name``         ``{{REDIS_SENTINEL_MASTER}}``
 ``/configdir/CELERY_BROKER_TRANSPORT_OPTIONS/visibility_timeout``  ``3600``
-``/configdir/POSTGRES_DB_URI``                                     ``postgresql://root:postgres@postgres:5432/database``
+``/configdir/POSTGRES_DB_URI.uri``                                 ``postgresql://root:postgres@postgres:5432/database``
 ``/configdir/SMTP/username``                                       ``sender``
 ``/configdir/SMTP/password``                                       ``$3cr3t``
 ``/configdir/SMTP/port``                                           ``542``
@@ -148,7 +148,7 @@ Parsed ConfigDir
     "REDIS_PASSWORD": "$3cr3t",
     "REDIS_PORT": "6319",
     "REDIS_SENTINEL_MASTER": "mymaster",
-    "REDIS_URI": "redis://:$3cr3t@redis-sentinel:6319/mymaster/0",
+    "REDIS_URI": "redis://:%243cr3t@redis-sentinel:6319/mymaster/0",
     "SMTP": {
       "certificate": "<binary>",
       "host": "mail.mailgun.com",
