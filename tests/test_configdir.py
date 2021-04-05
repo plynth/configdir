@@ -30,6 +30,9 @@ PUBLIC_KEY.bin: <public key binary>
 FIRST_PRIVATE_KEY: {{KEYS.keys@0.private_key}}
 INTERPOLATED_JSON.json: {"redis": "{{REDIS_URI}}", "redis_master": ["{{REDIS_SENTINEL_MASTER}}"]}
 INTERPOLATED_YAML.yaml: redis: '{{REDIS_URI}}'
+BLOBSTORE_URI.uri: http://{{BLOBSTORE_ACCESS_KEY}}:{{BLOBSTORE_SECRET_KEY}}@blobstore/
+BLOBSTORE_ACCESS_KEY: aderattsrngmvoc1gogj54
+BLOBSTORE_SECRET_KEY: C/Ahz+pAA/NMWirgEy4Pg==
 """
 
 
@@ -85,6 +88,9 @@ def test_config_dir(sample_config_dir):
             "username": "sender",
         },
         "UNICODE": "∫å∂¬∑π∑",
+        "BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/",
+        "BLOBSTORE_ACCESS_KEY": "aderattsrngmvoc1gogj54",
+        "BLOBSTORE_SECRET_KEY": "C/Ahz+pAA/NMWirgEy4Pg=="
     }
 
 

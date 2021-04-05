@@ -87,9 +87,10 @@ File Types
   interpolated.
 - ``.yaml`` will automatically be decoded as YAML then each value will be
   interpolated.
-- ``.bin`` will not be UTF8 decoded, will not be interpolated, and will be
+- ``.bin`` will not be UTF-8 decoded, will not be interpolated, and will be
   loaded as binary.
-
+- ``.uri`` will be decoded as a UTF-8 string then interpolated and each 
+  interpolated value will be URL encoded. 
 
 Example
 ~~~~~~~
@@ -117,6 +118,10 @@ File Path                                                          Contents
 ``/configdir/SMTP/certificate.bin``	                               ``<binary>``
 ``/configdir/KEYS.json``                                           ``{"keys": {"id": 1, "private_key": "<pem>"}}``
 ``/configdir/PUBLIC_KEY.bin``	                                     ``<binary>``
+``/configdir/BLOBSTORE_URI.uri``                                   ``http://{{BLOBSTORE_KEY}}:{{BLOBSTORE_SECRET}}@blobstore/``
+``/configdir/BLOBSTORE_KEY``                                       ``aderattsrngmvoc1gogj54``
+``/configdir/BLOBSTORE_SECRET``                                    ``C/Ahz+pAA/NMWirgEy4Pg==``
+
 =================================================================  ========
 
 
@@ -149,7 +154,10 @@ Parsed ConfigDir
       "host": "mail.mailgun.com",
       "password": "$3cr3t",
       "port": "542"
-    }
+    },
+    "BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/",
+    "BLOBSTORE_KEY": "aderattsrngmvoc1gogj54",
+    "BLOBSTORE_SECRET": "C/Ahz+pAA/NMWirgEy4Pg=="    
   }
 
 

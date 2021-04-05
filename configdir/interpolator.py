@@ -1,3 +1,4 @@
+from functools import partial
 import re
 from types import GeneratorType
 from collections.abc import Mapping
@@ -45,7 +46,7 @@ class Interpolator:
 
             yield prefix, key, key_parts[: i + 2]
 
-    def _get_value(self, match):
+    def _get_value(self, match, formatter=None):
         full_key = match.groupdict()["key"]
         value = self.values
         for prefix, key, path in self._key_segments(full_key):
@@ -60,6 +61,9 @@ class Interpolator:
                     "Could not find index `{}` at `{}`".format(key, "".join(path))
                 )
 
+        if formatter:
+            return formatter(full_key, value, self.values)
+
         if isinstance(value, str):
             # Interpolate the value in case it is a placeholder
             value = self(value)
@@ -72,20 +76,26 @@ class Interpolator:
 
         return value
 
-    def __call__(self, value):
+    def __call__(self, value, formatter=None):
         """
         Interpolate a value
 
         Args:
              value (mixed)
+             formatter (callable): A optional function that takes the current key and value
+             and dictionary of values and returns the value, possibly with modifications.
+                 Example::
+                     def format(key, value, values):
+                         # optionally modify value
+                         return value
 
         Returns:
             mixed: The interpolated value
         """
         if isinstance(value, Mapping):
-            return {k: self(v) for k, v in value.items()}
+            return {k: self(v, formatter=formatter) for k, v in value.items()}
         elif isinstance(value, (list, GeneratorType)):
-            return [self(v) for v in value]
+            return [self(v, formatter=formatter) for v in value]
         elif isinstance(value, str):
-            return self._key_regex.sub(self._get_value, value)
+            return self._key_regex.sub(partial(self._get_value, formatter=formatter), value)
         return value
