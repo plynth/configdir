@@ -7,6 +7,16 @@ readme = "README.rst"
 homepage = "https://github.com/plynth/configdir"
 repository = "https://github.com/plynth/configdir"
 
+classifiers = [
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 2.7",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 [tool.poetry.dependencies]
 python = "^2.7 || ^3.6 ||  ^3.7"
 six = "^1.15.0"
