@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "configdir"
-version = "0.3.0"
+version = "0.3.1"
 description = "File names for keys. File contents for values."
 authors = ["Michael Thornton <six8@devdetails.com>"]
 readme = "README.rst"
