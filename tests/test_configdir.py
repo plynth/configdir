@@ -10,16 +10,16 @@ from configdir.exceptions import ConfigDirMissingError
 from configdir.interpolator import Interpolator
 
 _SAMPLE_FILES = """\
-REDIS_URI: redis://:{{REDIS_PASSWORD}}@{{REDIS_HOST}}:{{REDIS_PORT}}/{{REDIS_SENTINEL_MASTER}}/0
+REDIS_URI.uri: redis://:{{REDIS_PASSWORD}}@{{REDIS_HOST}}:{{REDIS_PORT}}/{{REDIS_SENTINEL_MASTER}}/0
 REDIS_PASSWORD: $3cr3t
 REDIS_SENTINEL_MASTER: mymaster
 REDIS_HOST: redis-sentinel
 REDIS_PORT: 6319
 UNICODE: ∫å∂¬∑π∑
-CELERY_BROKER_URL: sentinel://{{REDIS_HOST}}:{{REDIS_PORT}}
+CELERY_BROKER_URL.uri: sentinel://{{REDIS_HOST}}:{{REDIS_PORT}}
 CELERY_BROKER_TRANSPORT_OPTIONS/master_name: {{REDIS_SENTINEL_MASTER}}
 CELERY_BROKER_TRANSPORT_OPTIONS/visibility_timeout: 3600
-POSTGRES_DB_URI: postgresql://root:postgres@postgres:5432/database
+POSTGRES_DB_URI.uri: postgresql://root:postgres@postgres:5432/database
 SMTP/username: sender
 SMTP/password: $3cr3t
 SMTP/port: 542
@@ -79,7 +79,7 @@ def test_config_dir(sample_config_dir):
         "REDIS_PASSWORD": "$3cr3t",
         "REDIS_PORT": "6319",
         "REDIS_SENTINEL_MASTER": "mymaster",
-        "REDIS_URI": "redis://:$3cr3t@redis-sentinel:6319/mymaster/0",
+        "REDIS_URI": "redis://:%243cr3t@redis-sentinel:6319/mymaster/0",
         "SMTP": {
             "certificate": b"<binary certificate>",
             "host": "mail.mailgun.com",
