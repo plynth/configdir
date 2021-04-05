@@ -1,10 +1,9 @@
 import re
 from types import GeneratorType
+from collections.abc import Mapping
 
-from .compat import Mapping, string_types, text_type
 
-
-class Interpolator(object):
+class Interpolator:
     """
     Recursively interpolate variable placeholders in strings.
 
@@ -61,11 +60,11 @@ class Interpolator(object):
                     "Could not find index `{}` at `{}`".format(key, "".join(path))
                 )
 
-        if isinstance(value, text_type):
+        if isinstance(value, str):
             # Interpolate the value in case it is a placeholder
             value = self(value)
         elif isinstance(value, (int, float)):
-            value = text_type(value)
+            value = str(value)
         else:
             raise TypeError(
                 "`{}` does not reference a number or string value".format(full_key)
@@ -87,6 +86,6 @@ class Interpolator(object):
             return {k: self(v) for k, v in value.items()}
         elif isinstance(value, (list, GeneratorType)):
             return [self(v) for v in value]
-        elif isinstance(value, string_types):
+        elif isinstance(value, str):
             return self._key_regex.sub(self._get_value, value)
         return value

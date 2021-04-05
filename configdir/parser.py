@@ -2,12 +2,7 @@ import os
 
 from .exceptions import ConfigDirMissingError
 from .interpolator import Interpolator
-from .compat import json
-
-try:
-    import yaml
-except ImportError:
-    yaml = None
+from .compat import json, yaml
 
 
 def _get_config_values(directory, interpolate_keys, parent):
