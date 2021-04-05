@@ -117,8 +117,11 @@ File Path                                                          Contents
 ``/configdir/SMTP/host``                                           ``mail.mailgun.com``
 ``/configdir/SMTP/certificate.bin``	                               ``<binary>``
 ``/configdir/KEYS.json``                                           ``{"keys": {"id": 1, "private_key": "<pem>"}}``
-``/configdir/PUBLIC_KEY.bin``	                                   ``<binary>``
-``/configdir/TSR_BLOBSTORE_URI``                                   ``http://aderattsrngmvoc1gogj54:C%2FAhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m%2BpAA%2FNMWirg9UzSokGXeHk692FEy4Pg%3D%3D@blobstore.tsr.svc.cluster.local/diagnostics``
+``/configdir/PUBLIC_KEY.bin``	                                     ``<binary>``
+``/configdir/BLOBSTORE_URI.uri``                                   ``http://{{BLOBSTORE_KEY}}:{{BLOBSTORE_SECRET}}@blobstore/``
+``/configdir/BLOBSTORE_KEY``                                       ``aderattsrngmvoc1gogj54``
+``/configdir/BLOBSTORE_SECRET``                                    ``C/Ahz+pAA/NMWirgEy4Pg==``
+
 =================================================================  ========
 
 
@@ -152,7 +155,7 @@ Parsed ConfigDir
       "password": "$3cr3t",
       "port": "542"
     },
-    "TSR_BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m%2BpAA%2FNMWirg9UzSokGXeHk692FEy4Pg%3D%3D@blobstore.tsr.svc.cluster.local/diagnostics"
+    "TSR_BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/"
   }
 
 
