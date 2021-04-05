@@ -87,10 +87,10 @@ File Types
   interpolated.
 - ``.yaml`` will automatically be decoded as YAML then each value will be
   interpolated.
-- ``.bin`` will not be UTF8 decoded, will not be interpolated, and will be
+- ``.bin`` will not be UTF-8 decoded, will not be interpolated, and will be
   loaded as binary.
-- ``.uri`` will be decoded to a str and a custom uri parameter formatter
-  will be added as a setting to the key.
+- ``.uri`` will be decoded as a UTF-8 string then interpolated and each 
+  interpolated value will be URL encoded. 
 
 Example
 ~~~~~~~
