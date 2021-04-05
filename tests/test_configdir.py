@@ -30,9 +30,9 @@ PUBLIC_KEY.bin: <public key binary>
 FIRST_PRIVATE_KEY: {{KEYS.keys@0.private_key}}
 INTERPOLATED_JSON.json: {"redis": "{{REDIS_URI}}", "redis_master": ["{{REDIS_SENTINEL_MASTER}}"]}
 INTERPOLATED_YAML.yaml: redis: '{{REDIS_URI}}'
-TSR_BLOBSTORE_URI.uri: http://{{TSR_BLOBSTORE_ACCESS_KEY}}:{{TSR_BLOBSTORE_SECRET_KEY}}@blobstore.tsr.svc.cluster.local/diagnostics
-TSR_BLOBSTORE_ACCESS_KEY: aderattsrngmvoc1gogj54
-TSR_BLOBSTORE_SECRET_KEY: C/AhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m+pAA/NMWirg9UzSokGXeHk692FEy4Pg==
+BLOBSTORE_URI.uri: http://{{BLOBSTORE_ACCESS_KEY}}:{{BLOBSTORE_SECRET_KEY}}@blobstore/
+BLOBSTORE_ACCESS_KEY: aderattsrngmvoc1gogj54
+BLOBSTORE_SECRET_KEY: C/Ahz+pAA/NMWirgEy4Pg==
 """
 
 
@@ -88,9 +88,9 @@ def test_config_dir(sample_config_dir):
             "username": "sender",
         },
         "UNICODE": "∫å∂¬∑π∑",
-        "TSR_BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m%2BpAA%2FNMWirg9UzSokGXeHk692FEy4Pg%3D%3D@blobstore.tsr.svc.cluster.local/diagnostics",
-        "TSR_BLOBSTORE_ACCESS_KEY": "aderattsrngmvoc1gogj54",
-        "TSR_BLOBSTORE_SECRET_KEY": "C/AhzQIIDui4KdSk8RCwg8cH9LacTioUxdrAdIzqAPAHyGc29J00n2m+pAA/NMWirg9UzSokGXeHk692FEy4Pg=="
+        "BLOBSTORE_URI": "http://aderattsrngmvoc1gogj54:C%2FAhz%2BpAA%2FNMWirgEy4Pg%3D%3D@blobstore/",
+        "BLOBSTORE_ACCESS_KEY": "aderattsrngmvoc1gogj54",
+        "BLOBSTORE_SECRET_KEY": "C/Ahz+pAA/NMWirgEy4Pg=="
     }
 
 
