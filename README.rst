@@ -14,8 +14,9 @@ Features
 --------
 
 - Security |--| Environmental variables set on a Docker image or container are
-  injectable outside the container. This means environmental variables are
-  insecure for secrets like passwords or encryption keys.
+  injectable outside the container. When forking a process, the environmental 
+  variables are often exposed to the new process. This means environmental 
+  variables are insecure for secrets like passwords or encryption keys.
 - Simplicity |--| ConfigDir is simple to parse. This makes it easy for any
   language to parse. It is particularly useful for shell interpreters like
   bash.
